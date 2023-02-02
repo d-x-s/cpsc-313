@@ -1,6 +1,6 @@
 all: hello
 O ?= -O0
-
+CFLAGS = -g
 %.o: %.c $(BUILDSTAMP)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(DEPCFLAGS) $(O) -o $@ -c $<
 

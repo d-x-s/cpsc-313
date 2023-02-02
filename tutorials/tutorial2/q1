@@ -1,0 +1,29 @@
+1) For this question, the goal is to introduce a new instruction 
+    to the y86 called the indirect conditional jump.
+
+- jXX *D(rB)
+- semanatics are PC <- M_8[D+R[rB]]
+- additional circuity may be needed to route signals to
+  appropriate decision points
+
+Fetch
+iCd:IFn = M_1[PC]
+rA:rB   = M_1[PC+1]
+ValC    = M_8[PC+2]
+ValP    = PC + 10
+
+Decode
+ValB    = Reg[rB]
+
+Execute
+ValB    = ValB + ValC
+CND     = Cond(CC, iFn)
+
+Memory
+ValM    = M_8[ValE]
+
+Write-back
+N/A, nothing to write into memory
+
+PC-Update
+PC = CND? ValM : ValP

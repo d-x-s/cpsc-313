@@ -14,3 +14,8 @@ int main(int argc, char *argv[]) {
 
 	printf("%ld\n", sum);
 }
+
+C. Write the equivalent  y86 program, leaving the value of sum in %rax instead of printing it.
+
+D. The C program has a serious flaw, what is it?
+out of bounds access if max is too big, it will definitely go out of ranges

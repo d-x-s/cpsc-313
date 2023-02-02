@@ -1,0 +1,32 @@
+Pipeline Timing
+
+Given a processor with the following performance:
+Stage 1 takes 100 ps
+Stage 2 takes 60 ps
+Stage 3 takes 90 ps
+Stage 4 takes 120 ps
+Each register adds 30 ps
+
+1) Definitions
+Latency is how long it takes for an instruction to retire
+Throughput is number of instructions retired within a specific period of time
+
+SEQUENTIAL:
+2a) Sequential Latency?
+100 + 60 + 90 + 120 + 30 = 400ps
+
+2b) How much time it takes for an instruction to get retired?
+400ps
+
+2c) Throughput?
+(1 instr/400 ps) = (10^3 instr/400s)
+
+PIPELINED:
+3a) Pipelined Latency
+(120)(4) + (30)(4) = 480 + 120 = 600ps
+
+3b) How much time it takes for an instruction to get retired?
+30 + 120 = 150ps (an instruction is retired every 150ps seconds)
+
+3c) Throughput?
+(1 instr/150 ps) = (10^3 instr/150)

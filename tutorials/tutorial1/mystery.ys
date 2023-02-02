@@ -1,22 +1,20 @@
 # Describe in English what this program does
 # Write C code to implement the same functionality.
 
-    irmovq  array, %rcx
-    irmovq  8, %rsi
-    xorq    %rax, %rax
+    irmovq  array, %rcx       # put address of array in %rcx
+    irmovq  8, %rsi           # put 8 into %rsi
+    xorq    %rax, %rax        # XORQ with yourself sets the value to 0 (wipes the register)
 loop:
-    mrmovq  0(%rcx), %rbx
-    irmovq  -1, %rdi
-    subq    %rbx, %rdi
-    je      done
-    addq    %rbx, %rax
-    addq    %rsi, %rcx
-    jmp     loop
+    mrmovq  0(%rcx), %rbx     # move the first value at array into　％rbx
+    irmovq  -1, %rdi          # put -1 into %rdi 
+    subq    %rbx, %rdi        # %rdi = %rdi - %rbx which is (-1 - value at array) and -1 denotes the end of the array
+    je      done              # if value at array is -1 (I.E. the end) go back to start of loop
+    addq    %rbx, %rax        # %rax = %rax + %rbx
+    addq    %rsi, %rcx        # %rcx = %rcx + %rsi
+    jmp     loop              # 
     
 done:
     halt
-
-    
 
 .pos 0x2000
 array:
@@ -27,3 +25,10 @@ array:
 .quad   15
 .quad   27
 .quad   -1
+
+The C program:
+long array = {42, 3, 199, 019, 15, 27, -1}
+long sum = 0
+for (long* i = array; *i != -1; i++) {
+    sum += = *i;
+}
